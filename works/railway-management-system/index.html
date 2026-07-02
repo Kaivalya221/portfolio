@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Geist:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/project-interactive.css" />
 </head>
 <body>
   <nav class="nav">
@@ -34,27 +35,17 @@
       <a href="https://www.linkedin.com/in/kaivalya-basu" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-  <main>
-    <header class="proj-hero"><h1 class="reveal-mask"><span>Railway Management System<span class="dot">.</span></span></h1></header>
-    <section class="proj-info" data-reveal>
-      <div class="info-item"><h4>Type:</h4><h4>Personal Project</h4></div>
-      <div class="info-item"><h4>Role:</h4><h4>Full-Stack Developer</h4></div>
-      <div class="info-item"><h4>Stack:</h4><h4>Next.js · TypeScript · Supabase · Groq AI</h4></div>
-      <div></div>
-    </section>
-    <figure class="proj-figure" data-reveal><img src="https://framerusercontent.com/images/hQsUtag595xZ3vfz1tKA7tN3IZk.jpg" alt="Railway Management System" /></figure>
-    <div class="proj-body">
-          <h3>Overview</h3><p>A railway management platform built with Next.js, TypeScript, Supabase and Groq AI APIs — combining ticket booking with intelligent, real-time operational insight.</p>
-          <h3>Key Features</h3><p>• Ticket booking with real-time train delay prediction. 
-• Predictive maintenance alerts to improve operational efficiency. 
-• An analytics dashboard to monitor system performance and key insights.</p>
-    </div>
-    <div class="proj-gallery">
-      <figure data-reveal><img src="https://framerusercontent.com/images/2clle6j2VugwNImtCfurzPncwQI.jpeg" alt="" /></figure>
-      <figure data-reveal><img src="https://framerusercontent.com/images/ldv76eV9y10BNNE47hrj0YUXFTg.jpeg" alt="" /></figure>
-    </div>
-    <div class="proj-body">
-          <h3>Tech Stack</h3><p>Next.js, TypeScript, Supabase, and Groq AI APIs — chosen for a fast, type-safe frontend, a real-time database, and AI-driven prediction.</p>
+  <main class="inner-project-wrap">
+    <img src="../../assets/projects/railway_new.png" class="inner-project-bg" alt="" />
+    <div class="inner-glass-card">
+      <h1>Railway<br>Management System</h1>
+      <p class="subtitle">A comprehensive system to manage trains, routes, bookings, schedules and real-time train tracking with role-based authentication and analytics.</p>
+      <div class="inner-tech-stack">
+        <span>Next.js</span>
+        <span>TypeScript</span>
+        <span>Supabase</span>
+        <span>Groq AI</span>
+      </div>
     </div>
   </main>
   <section class="cta">
@@ -108,6 +99,7 @@
   <div class="cursor-ring" data-cursor-ring></div>
   <div class="cursor-dot" data-cursor-dot></div>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
   <script src="../../assets/js/main.js"></script>
 </body>
 </html>

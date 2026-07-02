@@ -37,7 +37,7 @@
   <!-- ============ FULLSCREEN MENU ============ -->
   <div class="menu" data-menu>
     <a href="./">Home</a>
-    <a href="works/">Work</a>
+    <a href="works/index.html">Work</a>
     <a href="#about">About</a>
     <a href="mailto:kaivalya.offi@gmail.com">Contact</a>
     <div class="menu-socials">
@@ -86,7 +86,7 @@
         </div>
         <div class="about-grid">
           <figure class="about-photo" data-reveal>
-            <img src="https://framerusercontent.com/images/Y7xGl21aQgHVU4UiWLBvVfD1dU.jpg?scale-down-to=1024" alt="Portrait" />
+            <img src="assets/portrait_new.png" alt="Portrait" />
           </figure>
           <div class="about-copy">
             <div data-reveal>
@@ -119,7 +119,7 @@
           </div>
           <div class="svc-row" data-reveal>
             <div class="svc-head"><span class="svc-num">03</span><h3 class="svc-name">Computer Vision &amp; Deep Learning</h3></div>
-            <p class="svc-desc">Applying CNNs to real-world problems — leaf disease detection, pothole detection &amp; 3D reconstruction, and PPE detection.</p>
+            <p class="svc-desc">Applying CNNs to real-world problems — leaf disease detection and PPE detection.</p>
           </div>
           <div class="svc-row" data-reveal>
             <div class="svc-head"><span class="svc-num">04</span><h3 class="svc-name">Data Analysis &amp; Visualization</h3></div>
@@ -130,40 +130,71 @@
     </section>
 
     <!-- ============ SELECTED WORKS ============ -->
-    <section class="section works sec-head">
-      <div class="wrap">
-        <div class="row-title">
+    <section class="sec-head" style="padding-bottom: 0;">
+      <div class="wrap section">
+        <div class="row-title" style="margin-bottom: clamp(50px, 7vw, 110px);">
           <h2 class="big-title reveal-mask"><span>Selected<br>Works<span class="dot">.</span></span></h2>
-          <a href="works/" class="link-arrow" data-reveal>View All My Works
+          <a href="works/index.html" class="link-arrow" data-reveal>View All My Works
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span>
           </a>
         </div>
-        <div class="works-grid">
-          <a href="works/railway-management-system/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/bsOVyM4XG8uD2AY548T4Fc4LpA.png?scale-down-to=1024" alt="Railway Management System" /></div>
-            <div class="work-meta"><h4>Railway Management System</h4><p>Full-Stack Web</p></div>
-          </a>
-          <a href="works/crop-guard/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/IG2TbzXZBqWxMG0WBq6BXmaUQ.png?scale-down-to=1024" alt="CROP GUARD" /></div>
-            <div class="work-meta"><h4>CROP GUARD</h4><p>AI Web Platform</p></div>
-          </a>
-          <a href="works/demand-forecasting/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/5qECfl85aZyoLqX4zuYQggvVLY.png?scale-down-to=1024" alt="Demand Forecasting System" /></div>
-            <div class="work-meta"><h4>Demand Forecasting System</h4><p>Machine Learning</p></div>
-          </a>
-          <a href="works/algorithms-visualizer/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/aUEH8JAJImxuae4rwruKib7aCsE.png?scale-down-to=1024" alt="Algorithms Visualizer" /></div>
-            <div class="work-meta"><h4>Algorithms Visualizer</h4><p>Python Tooling</p></div>
-          </a>
-          <a href="works/pothole-detection/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/kOUtbc3a4C0wKMDaeFigxBksA4.png?scale-down-to=1024" alt="Pothole Detection & 3D Reconstruction" /></div>
-            <div class="work-meta"><h4>Pothole Detection &amp; 3D</h4><p>Computer Vision Research</p></div>
-          </a>
-          <a href="works/ppe-detection/" class="work-card" data-reveal>
-            <div class="work-media"><img src="https://framerusercontent.com/images/nhxJBEX6Zy58CiRjAwMjFM6b1yE.png?scale-down-to=1024" alt="PPE Detection" /></div>
-            <div class="work-meta"><h4>PPE Detection</h4><p>Computer Vision Research</p></div>
-          </a>
-        </div>
+      </div>
+      <div class="premium-works-wrapper">
+        <a href="works/railway-management-system/index.html" class="premium-project">
+          <img src="assets/projects/railway_new.png" class="project-bg" alt="Railway Management System" />
+          <div class="glass-overlay">
+            <h4>Railway<br>Management System</h4>
+            <p class="proj-type">Full-Stack Web</p>
+            <p class="proj-desc">A comprehensive system to manage trains, routes, bookings, schedules and real-time train tracking with role-based authentication and analytics.</p>
+            <div class="tech-stack">
+              <span>Next.js</span><span>TypeScript</span><span>Supabase</span>
+            </div>
+          </div>
+        </a>
+        <a href="works/crop-guard/index.html" class="premium-project">
+          <img src="assets/projects/crop_guard_new.png" class="project-bg" alt="CROP GUARD" />
+          <div class="glass-overlay">
+            <h4>CROP GUARD</h4>
+            <p class="proj-type">AI Web Platform</p>
+            <p class="proj-desc">An AI-powered agricultural platform that helps farmers optimize crop yields, predict diseases, and manage resources efficiently.</p>
+            <div class="tech-stack">
+              <span>Web</span><span>OpenAI GPT</span><span>REST APIs</span>
+            </div>
+          </div>
+        </a>
+        <a href="works/demand-forecasting/index.html" class="premium-project">
+          <img src="assets/projects/inventory_main.jpg" class="project-bg" alt="Smart Inventory Optimization System" />
+          <div class="glass-overlay">
+            <h4>Smart Inventory<br>Optimization System</h4>
+            <p class="proj-type">Machine Learning</p>
+            <p class="proj-desc">An intelligent inventory management solution utilizing machine learning to predict demand, minimize stockouts, and optimize supply chains.</p>
+            <div class="tech-stack">
+              <span>Python</span><span>Streamlit</span><span>ML</span>
+            </div>
+          </div>
+        </a>
+        <a href="works/netflix-clone/index.html" class="premium-project">
+          <img src="assets/projects/netflix_clone.png" class="project-bg" alt="Netflix Clone" />
+          <div class="glass-overlay">
+            <h4>Netflix Clone</h4>
+            <p class="proj-type">React Frontend</p>
+            <p class="proj-desc">A fully responsive streaming platform interface replicating core features with dynamic content fetching and modern UI/UX.</p>
+            <div class="tech-stack">
+              <span>React</span><span>CSS</span><span>API</span>
+            </div>
+          </div>
+        </a>
+        <a href="works/algorithms-visualizer/index.html" class="premium-project">
+          <img src="assets/projects/algorithms_main.png" class="project-bg" alt="Algorithms Visualizer" />
+          <div class="glass-overlay">
+            <h4>Algorithms Visualizer</h4>
+            <p class="proj-type">Python Tooling</p>
+            <p class="proj-desc">An interactive educational tool that brings complex algorithms to life through dynamic, step-by-step visual demonstrations.</p>
+            <div class="tech-stack">
+              <span>Python</span><span>Algorithms</span>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -178,12 +209,8 @@
           <a class="awd-row" href="https://www.linkedin.com/in/kaivalya-basu" target="_blank" rel="noopener" data-reveal>
             <span class="awd-id">Certification</span><span class="awd-name">Oracle Certified Professional — Java SE 17 Developer</span><span class="awd-org">Oracle</span><span class="awd-year">(2026)</span>
           </a>
-          <div class="awd-row" data-reveal>
-            <span class="awd-id">Research</span><span class="awd-name">Pothole Detection &amp; 3D Reconstruction</span><span class="awd-org">Depth estimation using CNNs</span><span class="awd-year"></span>
-          </div>
-          <div class="awd-row" data-reveal>
-            <span class="awd-id">Research</span><span class="awd-name">PPE Detection</span><span class="awd-org">In collaboration with UTP Malaysia</span><span class="awd-year"></span>
-          </div>
+
+
           <div class="awd-row" data-reveal>
             <span class="awd-id">Education</span><span class="awd-name">B.Tech, Computer Science &amp; Engineering</span><span class="awd-org">SRM Institute of Science and Technology</span><span class="awd-year">(2023–27)</span>
           </div>
@@ -272,7 +299,7 @@
       <div class="footer-col footer-links">
         <ul>
           <li><a href="./">Home</a></li>
-          <li><a href="works/">Work</a></li>
+          <li><a href="works/index.html">Work</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="mailto:kaivalya.offi@gmail.com">Contact</a></li>
         </ul>

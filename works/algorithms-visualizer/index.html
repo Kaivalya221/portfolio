@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Geist:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/project-interactive.css" />
 </head>
 <body>
   <nav class="nav">
@@ -34,27 +35,15 @@
       <a href="https://www.linkedin.com/in/kaivalya-basu" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-  <main>
-    <header class="proj-hero"><h1 class="reveal-mask"><span>Algorithms Visualizer<span class="dot">.</span></span></h1></header>
-    <section class="proj-info" data-reveal>
-      <div class="info-item"><h4>Type:</h4><h4>Personal Project</h4></div>
-      <div class="info-item"><h4>Role:</h4><h4>Developer</h4></div>
-      <div class="info-item"><h4>Stack:</h4><h4>Python · PyQt</h4></div>
-      <div></div>
-    </section>
-    <figure class="proj-figure" data-reveal><img src="https://framerusercontent.com/images/RZEj75fbJpqAjBzsuh2wyTM7RU.png" alt="Algorithms Visualizer" /></figure>
-    <div class="proj-body">
-          <h3>Overview</h3><p>A GUI-based visualization tool built with Python and PyQt that brings sorting, searching and pathfinding algorithms to life with real-time execution flow.</p>
-          <h3>Key Features</h3><p>• Real-time visualization of sorting, searching and pathfinding algorithms. 
-• An interactive interface that demonstrates algorithm behaviour and time complexity. 
-• Step-by-step execution to help users understand algorithm logic clearly.</p>
-    </div>
-    <div class="proj-gallery">
-      <figure data-reveal><img src="https://framerusercontent.com/images/04X6xyeezxFekRvf6amHTo1TdE.png" alt="" /></figure>
-      <figure data-reveal><img src="https://framerusercontent.com/images/t9sxuraac5uDE6KEbhh72sv3lI.png" alt="" /></figure>
-    </div>
-    <div class="proj-body">
-          <h3>Tech Stack</h3><p>Python and PyQt — a desktop GUI focused on clear, real-time algorithm execution and teaching.</p>
+  <main class="inner-project-wrap">
+    <img src="../../assets/projects/algorithms_main.png" class="inner-project-bg" alt="" />
+    <div class="inner-glass-card">
+      <h1>Algorithms Visualizer</h1>
+      <p class="subtitle">An interactive educational tool that brings complex algorithms to life through dynamic, step-by-step visual demonstrations.</p>
+      <div class="inner-tech-stack">
+        <span>Python</span>
+        <span>PyQt</span>
+      </div>
     </div>
   </main>
   <section class="cta">
@@ -108,6 +97,7 @@
   <div class="cursor-ring" data-cursor-ring></div>
   <div class="cursor-dot" data-cursor-dot></div>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
   <script src="../../assets/js/main.js"></script>
 </body>
 </html>

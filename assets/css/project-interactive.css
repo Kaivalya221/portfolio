@@ -1,0 +1,627 @@
+/* =========================================================
+   PROJECT INTERACTIVE & CODE STYLING
+   ========================================================= */
+
+.proj-interactive {
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+
+.interactive-container {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: clamp(40px, 5vw, 60px);
+}
+
+/* Tabs */
+.interactive-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 18px 24px;
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 1px solid var(--line);
+  transition: color 0.3s, background 0.3s;
+  text-align: center;
+}
+
+.tab-btn:last-child {
+  border-right: none;
+}
+
+.tab-btn:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tab-btn.active {
+  color: var(--white);
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Tab Panels */
+.tab-panel {
+  display: none;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Code Explorer Panel */
+.code-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #050505;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line);
+}
+
+.file-name {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+.btn-copy {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  padding: 6px 12px;
+  border: 1px solid rgba(248, 68, 46, 0.25);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn-copy:hover {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+.code-container pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d4d4d4;
+  background: transparent;
+}
+
+/* Syntax Highlighting */
+.code-keyword { color: #f8442e; font-weight: 600; }
+.code-string { color: #4ec9b0; }
+.code-comment { color: #6a9955; font-style: italic; }
+.code-number { color: #b5cea8; }
+.code-function { color: #dcdcaa; }
+.code-class { color: #4fc1ff; }
+.code-builtin { color: #c586c0; }
+
+/* Simulation General Styles */
+.simulator-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(24px, 4vw, 40px);
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.simulator-workspace {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  min-height: 380px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.simulator-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+}
+
+.sim-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sim-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+
+.sim-select, .sim-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--white);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.sim-select:focus, .sim-input:focus {
+  border-color: var(--accent);
+}
+
+.sim-select option {
+  background: var(--bg-soft);
+  color: var(--white);
+}
+
+/* Custom Slider */
+.sim-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sim-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.sim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.sim-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-val {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  width: 36px;
+  text-align: right;
+}
+
+.sim-btn {
+  background: var(--white);
+  color: #000;
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  border-radius: 6px;
+  text-align: center;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sim-btn:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.sim-btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--line);
+}
+
+.sim-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--white);
+}
+
+.sim-btn:disabled, .sim-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  border-color: var(--line-soft);
+}
+
+/* Railway Simulator Specifics */
+.train-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.train-node-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.train-track-line {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.train-track-progress {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: width 3s linear;
+}
+
+.train-station-node {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 2px solid var(--muted);
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.train-station-node.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.train-station-node span {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-label);
+  font-size: 9px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  color: var(--muted-2);
+}
+
+.train-simulation-output {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.metric-card label {
+  display: block;
+  font-family: var(--font-label);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.metric-card .val {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.metric-card .val.delay {
+  color: #ff6b6b;
+}
+
+.metric-card .val.ontime {
+  color: #51cf66;
+}
+
+/* Crop Guard Leaf Scan overlays */
+.leaf-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.leaf-image-view {
+  max-width: 90%;
+  max-height: 280px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  transition: filter 0.3s;
+}
+
+.scan-laser {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 15px var(--accent);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scan-laser.scanning {
+  animation: scanningAnim 2s infinite ease-in-out;
+  opacity: 1;
+}
+
+@keyframes scanningAnim {
+  0% { top: 10%; }
+  50% { top: 90%; }
+  100% { top: 10%; }
+}
+
+.scan-bounding-box {
+  position: absolute;
+  border: 2px dashed var(--accent);
+  background: rgba(248, 68, 46, 0.1);
+  display: none;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.crop-card-selection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.crop-sample-btn {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.crop-sample-btn.selected {
+  border-color: var(--accent);
+  background: rgba(248, 68, 46, 0.05);
+}
+
+.crop-sample-btn img {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.crop-sample-btn span {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+.terminal-box {
+  background: #020202;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  color: #39ff14; /* matrix green */
+  height: 100px;
+  overflow-y: auto;
+  width: 100%;
+  text-align: left;
+}
+
+/* Demand Forecasting Specifics */
+.chart-container {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.svg-chart {
+  flex: 1;
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  position: relative;
+  overflow: visible;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-dasharray: 4;
+}
+
+.chart-line-actual {
+  stroke: var(--white);
+  stroke-width: 2;
+  fill: none;
+}
+
+.chart-line-forecast {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 3;
+  fill: none;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted-2);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Algorithms Visualizer 3D Canvas */
+#three-canvas-container {
+  width: 100%;
+  height: 100%;
+  background: #020202;
+  position: relative;
+}
+
+.three-stats-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--muted-2);
+}
+
+.three-stats-overlay strong {
+  color: var(--white);
+}
+
+/* Pothole 3D Wireframe Depth Overlay */
+.pothole-workspace {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 120px;
+}
+
+.pothole-main-view {
+  position: relative;
+  overflow: hidden;
+}
+
+.pothole-depth-canvas {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.depth-profile-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+}
+
+.depth-profile-mesh.visible {
+  display: block;
+}

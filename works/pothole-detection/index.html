@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Geist:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/project-interactive.css" />
 </head>
 <body>
   <nav class="nav">
@@ -42,14 +43,144 @@
       <div class="info-item"><h4>Stack:</h4><h4>CNNs · Depth Estimation</h4></div>
       <div></div>
     </section>
-    <figure class="proj-figure" data-reveal><img src="https://framerusercontent.com/images/5ZaOPIX75RCmLrPklnwqSrC2DiA.jpg" alt="Pothole Detection & 3D Reconstruction" /></figure>
+    <figure class="proj-figure" data-reveal><img src="../../assets/projects/pothole_detection_main.jpg" alt="Pothole Detection & 3D Reconstruction" /></figure>
+
+    <!-- ============ INTERACTIVE SIMULATOR ============ -->
+    <section class="proj-interactive section" data-reveal>
+      <div class="wrap">
+        <div class="interactive-container">
+          <div class="interactive-tabs">
+            <button class="tab-btn active" data-tab="demo">Interactive Simulation</button>
+            <button class="tab-btn" data-tab="script">Project Script</button>
+          </div>
+          <div class="interactive-content">
+            
+            <!-- Demo Panel -->
+            <div class="tab-panel active" id="panel-demo">
+              <div class="simulator-layout">
+                <div class="simulator-workspace">
+                  <div class="pothole-workspace">
+                    <div class="pothole-main-view">
+                      <img id="pothole-img-view" src="../../assets/projects/pothole_detection_main.jpg" style="width:100%; height:100%; object-fit:cover;" alt="Road view">
+                    </div>
+                    <div id="pothole-depth-view" style="border-top: 1px solid var(--line); overflow: hidden;">
+                      <!-- Canvas renders depth mesh dynamically -->
+                      <div style="display:flex; justify-content:center; align-items:center; height:100%; color:var(--muted); font-size:12px; font-family:var(--font-label);">
+                        Click "Process CV Pipeline" to build 3D wireframe mesh
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="simulator-controls">
+                  <h3 class="sim-title">CV Depth Profiler</h3>
+                  <p class="sim-subtitle">Simulate road telemetry depth analysis. Run the OpenCV pipeline to detect potholes and project the road surface mesh in 3D perspective.</p>
+                  
+                  <div class="control-group">
+                    <label>Select Road Scenario</label>
+                    <select class="sim-select" id="pothole-scene-select">
+                      <option value="scene-1">Scenario A: Minor Pothole (Standard)</option>
+                      <option value="scene-2">Scenario B: Deep Road Crack (Critical)</option>
+                    </select>
+                  </div>
+                  
+                  <button class="sim-btn" id="pothole-sim-btn">Process CV Pipeline</button>
+                  
+                  <div class="train-simulation-output">
+                    <div class="metric-card">
+                      <label>Volume Estimate</label>
+                      <div class="val" id="pothole-volume">—</div>
+                    </div>
+                    <div class="metric-card">
+                      <label>Max Depth Profile</label>
+                      <div class="val" id="pothole-depth">—</div>
+                    </div>
+                    <div class="metric-card" style="grid-column: span 2;">
+                      <label>Pavement Severity Code</label>
+                      <div class="val" style="font-size: 20px;" id="pothole-severity">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Script Panel -->
+            <div class="tab-panel" id="panel-script">
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="file-name">pothole_depth_estimator.py</span>
+                  <button class="btn-copy">Copy Code</button>
+                </div>
+                <pre><code class="language-python"><span class="code-keyword">import</span> cv2
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+<span class="code-keyword">from</span> mpl_toolkits.mplot3d <span class="code-keyword">import</span> Axes3D
+
+<span class="code-comment"># 1. Load raw road-surface image frame</span>
+img = cv2.imread(<span class="code-string">"road_test_frame.jpg"</span>)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+<span class="code-comment"># 2. Filter noise and run bilateral image thresholding</span>
+blur = cv2.bilateralFilter(gray, 9, 75, 75)
+thresh = cv2.adaptiveThreshold(blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                               cv2.THRESH_BINARY_INV, 11, 2)
+
+<span class="code-comment"># 3. Detect candidate pothole contours and calculate areas</span>
+contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+potholes = []
+
+for cnt in contours:
+    area = cv2.contourArea(cnt)
+    if 500 &lt; area &lt; 50000: <span class="code-comment"># Filter noise from actual potholes</span>
+        potholes.append(cnt)
+        x, y, w, h = cv2.boundingRect(cnt)
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        print(f<span class="code-string">"[DETECT] Pothole found at x={x}, y={y} with area={area}"</span>)
+
+<span class="code-comment"># 4. Generate 3D depth-map mesh from single image shading (Shape from Shading)</span>
+<span class="code-keyword">def</span> <span class="code-function">reconstruct_3d_depth</span>(roi_gray):
+    <span class="code-comment">"""
+    Maps pixel intensity gradient offsets to simulate depth variations
+    """</span>
+    rows, cols = roi_gray.shape
+    X = np.arange(0, cols, 1)
+    Y = np.arange(0, rows, 1)
+    X, Y = np.meshgrid(X, Y)
+    
+    <span class="code-comment"># Standard shape estimation approximation: darken pixels represent deeper slots</span>
+    Z = (255.0 - roi_gray.astype(float)) / 255.0 * -15.0 <span class="code-comment"># Scale depth to max -15cm</span>
+    return X, Y, Z
+
+if len(potholes) &gt; 0:
+    x, y, w, h = cv2.boundingRect(potholes[0])
+    roi = gray[y:y+h, x:x+w]
+    
+    X_mesh, Y_mesh, Z_depth = reconstruct_3d_depth(roi)
+    
+    <span class="code-comment"># 5. Output metrics and plot wireframe height layout</span>
+    avg_depth = np.min(Z_depth)
+    est_volume = np.sum(np.abs(Z_depth)) * 0.0001 <span class="code-comment"># volume scale helper</span>
+    print(f<span class="code-string">"[METRIC] Estimated Max Depth: {avg_depth:.2f} cm"</span>)
+    print(f<span class="code-string">"[METRIC] Estimated Volume: {est_volume:.4f} m3"</span>)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection=<span class="code-string">'3d'</span>)
+    ax.plot_wireframe(X_mesh, Y_mesh, Z_depth, color=<span class="code-string">'red'</span>)
+    plt.savefig(<span class="code-string">"pothole_depth_mesh.png"</span>)</code></pre>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="proj-body">
           <h3>Overview</h3><p>Research on pothole detection and 3D reconstruction using depth estimation with convolutional neural networks (CNNs).</p>
           <h3>Focus</h3><p>Applying deep learning and depth estimation to detect road defects and reconstruct them in 3D — part of my computer vision research at SRM Institute of Science and Technology.</p>
     </div>
     <div class="proj-gallery">
-      <figure data-reveal><img src="https://framerusercontent.com/images/ff3JMQnpWql9gf8pUkp6XwiLg.jpg" alt="" /></figure>
-      <figure data-reveal><img src="https://framerusercontent.com/images/3Sy3fM2IsgOd6aq7ODwtIn7dMY.jpg" alt="" /></figure>
+      <figure data-reveal><img src="../../assets/projects/pothole_detection_detail1.jpg" alt="" /></figure>
+      <figure data-reveal><img src="../../assets/projects/pothole_detection_detail2.jpg" alt="" /></figure>
     </div>
     <div class="proj-body">
           <h3>Approach</h3><p>Convolutional neural networks for detection paired with depth-estimation techniques to recover 3D structure from imagery.</p>
@@ -106,6 +237,7 @@
   <div class="cursor-ring" data-cursor-ring></div>
   <div class="cursor-dot" data-cursor-dot></div>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../../assets/js/project-interactive.js"></script>
   <script src="../../assets/js/main.js"></script>
 </body>
 </html>
